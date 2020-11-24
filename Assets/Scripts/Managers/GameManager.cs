@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
         float cardInterval = 50;
         float x = -(cardsCount / 2f - 0.5f) * cardInterval + cardNumber * cardInterval;
         float y = -280 - Mathf.Abs(x) * 0.2f;
-        return new Vector3(x, y, 0);
+        return new Vector3(x, y, -0.1f * cardNumber);
     }
 
     private Quaternion CalculateCardRotation(float xPos)
@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
                 cardsInHand[lastChangedCardInd].card.Mana += amountToChange;
                 break;
         }
-        cardsInHand[lastChangedCardInd].rectTransform.SetAsLastSibling();
+        cardsInHand[lastChangedCardInd].rectTransform.DOPunchScale(Vector3.one * 0.2f, 0.3f, 1);
     }
 
     private struct CardStruct

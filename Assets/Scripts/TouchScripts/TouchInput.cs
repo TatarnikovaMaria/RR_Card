@@ -87,7 +87,7 @@ public class TouchInput : MonoBehaviour
 
                         case TouchPhase.Ended:
                             methodName = "OnTouchUp";
-                            if (racipient != draggedObject)
+                            if (draggedObject != null && racipient != draggedObject)
                             {
                                 draggedObject.SendMessage("OnTouchUp", new object[] { t.deltaPosition, t.deltaTime, new Vector2(), t.position }, SendMessageOptions.DontRequireReceiver);
                             }
